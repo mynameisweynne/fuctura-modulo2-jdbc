@@ -17,30 +17,50 @@ public class App {
 		UsuarioDAO usuarioDAO = DAOFactory.createUsuarioDAO();
 
 		System.out.println("==== TESTE 01: Inserção de Usuário ====");
-		Usuario novoUsuario = new Usuario(null, "11122233344", 32);
+		System.out.print("Digite o CPF: ");
+		String cpf = sc.next();
+		System.out.print("Digite a idade: ");
+		int idade = sc.nextInt();
+		Usuario novoUsuario = new Usuario(null, cpf, idade);
 		usuarioDAO.insert(novoUsuario);
 		System.out.println("Inserido! Novo id = " + novoUsuario.getId());
+		
+		System.out.println();
 
 		System.out.println("==== TESTE 02: Atualização de Usuário ====");
-		usuario = usuarioDAO.findById(2);
-		usuario.setCpf("00011122233");
-		usuario.setIdade(30);
+		System.out.print("Digite o Id: ");
+		int id = sc.nextInt();
+		usuario = usuarioDAO.findById(id);
+		System.out.print("Digite o CPF correto: ");
+		cpf = sc.next();
+		usuario.setCpf(cpf);
+		System.out.print("Digite a idade correta: ");
+		idade = sc.nextInt();
+		usuario.setIdade(idade);
 		usuarioDAO.update(usuario);
 		System.out.println("Atualizado!");
+		
+		System.out.println();
 
 		System.out.println("==== TESTE 03: Busca de Usuário por Id ====");
-		usuario = usuarioDAO.findById(3);
+		System.out.print("Digite o id: ");
+		id = sc.nextInt();
+		usuario = usuarioDAO.findById(id);
 		System.out.println(usuario);
+		
+		System.out.println();
 
 		System.out.println("==== TESTE 04: Busca todos os Usuarios ====");
 		List<Usuario> list = usuarioDAO.findAll();
 		for (Usuario obj : list) {
 			System.out.println(obj);
 		}
+		
+		System.out.println();
 
 		System.out.println("==== TESTE 05: Deleta Usuário por Id ====");
 		System.out.print("Digite o id que será deletado: ");
-		int id = sc.nextInt();
+		id = sc.nextInt();
 		usuarioDAO.deleteById(id);
 		System.out.println("Deletado!");
 
