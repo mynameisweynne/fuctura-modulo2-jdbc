@@ -58,6 +58,6 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "id= " + id + ", cpf= " + cpf + ", idade= " + idade;
+		return "\nUsuário " + id + "\ncpf = " + cpf + "\nidade = " + idade;
 	}
 }

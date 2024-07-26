@@ -69,7 +69,7 @@ public class UsuarioDAOJDBC implements UsuarioDAO {
 	public void deleteById(Integer id) {
 		try (PreparedStatement pstmt = conn.prepareStatement("DELETE FROM usuario WHERE id = ?")) {
 
-			pstmt.setLong(1, id);
+			pstmt.setInt(1, id);
 
 			int rowsAffected = pstmt.executeUpdate();
 
@@ -86,7 +86,7 @@ public class UsuarioDAOJDBC implements UsuarioDAO {
 	public Usuario findById(Integer id) {
 		try (PreparedStatement pstmt = conn.prepareStatement("SELECT usuario.* FROM usuario WHERE id = ?")) {
 
-			pstmt.setLong(1, id);
+			pstmt.setInt(1, id);
 
 			try (ResultSet rs = pstmt.executeQuery()) {
 
